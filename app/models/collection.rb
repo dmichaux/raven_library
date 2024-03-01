@@ -2,6 +2,9 @@ class Collection < ApplicationRecord
   has_many :writings,
            dependent: :restrict_with_exception
 
+
+  scope :alpha_order, -> {order(:name)}
+
   def publish_all
     return if archived?
 

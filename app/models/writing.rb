@@ -4,6 +4,8 @@ class Writing < ApplicationRecord
   acts_as_list scope: :collection
   has_rich_text :content
 
+  scope :by_position, -> {order(:position)}
+
   def self.publish_by_collection(collection_id)
     where(collection_id: collection_id)
     .each(&:publish)

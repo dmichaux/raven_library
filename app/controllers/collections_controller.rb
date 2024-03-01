@@ -2,7 +2,7 @@ class CollectionsController < ApplicationController
   # before_action :authenticate_user!, only: %i[new create]
 
   def index
-    @collections = Collection.all
+    @collections = Collection.alpha_order
   end
 
   def show
