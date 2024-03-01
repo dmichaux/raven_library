@@ -12,7 +12,11 @@ class WritingsController < ApplicationController
 
   def create
     writing = Writing.new(writing_params)
-    redirect_to collection_writing_path(@collection, writing) if writing.save
+    if writing.save
+      redirect_to collection_writing_path(@collection, writing) 
+    else
+      redirect_to @collection
+    end
   end
 
   private

@@ -4,9 +4,10 @@
   > <%= @writing.name %>
 <% end %>
 
-<h2 class='page-heading'>
-  <%= @writing.name %>
-</h2>
+<div class='page-heading'>
+  <h2><%= @writing.name %></h2>
+  <small><%= @writing.author_fullname %> | <%= @writing.pub_date %></small>
+</div>
 
 <article>
   <%= simple_format @writing.content %>

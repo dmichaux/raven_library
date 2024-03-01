@@ -54,6 +54,10 @@ class Writing < ApplicationRecord
   end
 
   def author_fullname
-    "#{author_first} #{author_last}"
+    "#{author_first}#{(' ' + author_middle) if author_middle?} #{author_last}"
+  end
+
+  def pub_date
+    published_at&.strftime('%Y') || 'unpublished'
   end
 end
