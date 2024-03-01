@@ -1,6 +1,6 @@
 <% content_for :breadcrumbs do %>
   <%= link_to('Collections', collections_path) %>
-  > <%= link_to(@collection.name, collection_writings_path(@collection, @writing)) %>
+  > <%= link_to(@collection.name, @collection) %>
   > <%= @writing.name %>
 <% end %>
 
