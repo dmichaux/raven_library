@@ -10,7 +10,13 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class='text-black'>
+    <%= render 'layouts/header' %>
+    <div class='row vh-100'>
+      <div class='col-2 border-end border-2 border-black'></div>
+      <main class='col-10'>
+        <%= yield %>
+      </main>
+    </div>
   </body>
 </html>

@@ -1,0 +1,15 @@
+<div class='row border-bottom border-2 border-black'>
+  <div class='col-2 d-flex border-end border-2 border-black p-0'>
+    <%= image_tag 'raven.png', alt: 'raven', class: 'img-fluid m-auto p-2 ps-3' %>
+  </div>
+  <header class='col-10 d-flex'>
+    <div class='align-self-center'>
+      <h1><%= link_to('Raven Library', root_path, class: 'text-decoration-none text-black') %></h1>
+      <nav>
+        <%= yield(:breadcrumbs) %>
+      </nav>
+    <div>
+  </header>
+  <!-- <div class="notice"><%= notice %></div>
+  <div class="alert"><%= alert %></div> -->
+</div>

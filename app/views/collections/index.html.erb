@@ -1,0 +1,9 @@
+<h2 class='page-heading'>collections</h2>
+
+<%# if user_signed_in? %>
+  <%= link_to 'add collection', new_collection_path, class: 'btn btn-sm btn-secondary'  %>
+<%# end %>
+
+<ul>
+  <%= render @collections %>
+</ul>

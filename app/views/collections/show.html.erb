@@ -1,0 +1,15 @@
+<% content_for :breadcrumbs do %>
+  <%= link_to('Collections', collections_path) %>
+  >
+  <%= @collection.name %>
+<% end %>
+
+<h2 class='page-heading'><%= @collection.name %></h2>
+
+<%# if user_signed_in? %>
+  <%= link_to 'add to collection', new_collection_writing_path(@collection), class: 'btn btn-sm btn-secondary'  %>
+<%# end %>
+
+<ul>
+  <%= render partial: 'writings/writing', collection: @collection.writings %>
+</ul>
