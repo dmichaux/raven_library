@@ -1,9 +1,12 @@
+<small>
+<%# if user_signed_in? %>
+  <%= link_to 'new collection', new_collection_path, class: 'text-black'  %>
+<%# end %>
+</small>
+
 <h2 class='page-heading'>collections</h2>
 
-<%# if user_signed_in? %>
-  <%= link_to 'add collection', new_collection_path, class: 'btn btn-sm btn-secondary'  %>
-<%# end %>
 
-<ul>
+<ul class='list-group list-group-flush w-50 mt-3'>
   <%= render @collections %>
 </ul>
