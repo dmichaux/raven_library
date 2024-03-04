@@ -11,7 +11,10 @@
     </div>
     <% if user_signed_in? %>
       <small>
-        <%= link_to 'sign out', destroy_user_session_path, method: :delete, class: 'text-black'  %>
+        <%= link_to 'sign out',
+                    destroy_user_session_path,
+                    data: { turbo_method: :delete },
+                    class: 'text-black'  %>
       </small>
     <% end %>
   </header>
