@@ -4,11 +4,11 @@
   <%= @collection.name %>
 <% end %>
 
-<small>
-  <%# if user_signed_in? %>
+<% if user_signed_in? %>
+  <small>
     <%= link_to 'add to collection', new_collection_writing_path(@collection), class: 'text-black'  %>
-  <%# end %>
-</small>
+  </small>
+<% end %>
 
 <h2 class='page-heading'><%= @collection.name %></h2>
 

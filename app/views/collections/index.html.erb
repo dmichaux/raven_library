@@ -1,11 +1,10 @@
-<small>
-<%# if user_signed_in? %>
-  <%= link_to 'new collection', new_collection_path, class: 'text-black'  %>
-<%# end %>
-</small>
+<% if user_signed_in? %>
+  <small>
+    <%= link_to 'new collection', new_collection_path, class: 'text-black'  %>
+  </small>
+<% end %>
 
 <h2 class='page-heading'>Collections</h2>
-
 
 <ul class='list-group list-group-flush mt-3'>
   <%= render @collections %>

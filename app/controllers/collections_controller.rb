@@ -1,5 +1,5 @@
 class CollectionsController < ApplicationController
-  # before_action :authenticate_user!, only: %i[new create]
+  before_action :authenticate_user!, only: %i[new create]
 
   def index
     @collections = Collection.alpha_order

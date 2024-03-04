@@ -8,7 +8,12 @@
       <nav>
         <%= yield(:breadcrumbs) %>
       </nav>
-    <div>
+    </div>
+    <% if user_signed_in? %>
+      <small>
+        <%= link_to 'sign out', destroy_user_session_path, method: :delete, class: 'text-black'  %>
+      </small>
+    <% end %>
   </header>
   <!-- <div class="notice"><%= notice %></div>
   <div class="alert"><%= alert %></div> -->

@@ -1,5 +1,5 @@
 class WritingsController < ApplicationController
-  # before_action :authenticate_user!, only: %i[new create]
+  before_action :authenticate_user!, only: %i[new create]
   before_action :find_collection, only: %i[show new create]
 
   def show
