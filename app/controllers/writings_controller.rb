@@ -1,9 +1,10 @@
 class WritingsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
-  before_action :find_collection, only: %i[show new create]
+  before_action :find_collection, only: %i[new create]
 
   def show
     @writing = Writing.find params[:id]
+    @collection = @writing.collection
   end
 
   def new
@@ -13,7 +14,7 @@ class WritingsController < ApplicationController
   def create
     writing = Writing.new(writing_params)
     if writing.save
-      redirect_to collection_writing_path(@collection, writing) 
+      redirect_to writing_path(writing) 
     else
       redirect_to @collection
     end

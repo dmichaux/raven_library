@@ -1,6 +1,6 @@
 <h2 class='page-heading'>Add to <%= @collection.name %></h2>
 
-<%= form_with model: @writing, url: collection_writings_url(@collection) do |f| %>
+<%= form_with model: @writing do |f| %>
   <%= f.hidden_field :collection_id %>
 
   <%= f.label :author_first, class: 'form-label' %>
