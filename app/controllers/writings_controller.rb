@@ -22,6 +22,7 @@ class WritingsController < ApplicationController
   end
 
   # So far, only for (un)publishing
+  # TODO: should be calling @writing.publish, instead
   def update
     @writing.update(update_writing_params)
     redirect_to @writing

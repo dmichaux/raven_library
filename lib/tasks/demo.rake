@@ -20,9 +20,9 @@ namespace :demo do
     puts 'creating new data'
 
     FactoryBot.create :user
-    colls = FactoryBot.create_list :collection, 7
+    colls = FactoryBot.create_list(:collection, 7, :published)
     colls.each do |c|
-      FactoryBot.create_list :writing, 20, collection: c
+      FactoryBot.create_list(:writing, 20, :published, collection: c)
     end
 
     puts 'done!'

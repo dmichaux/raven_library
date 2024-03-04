@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'collections#index'
   devise_for :users
 
-  resources :collections, only: %i[index show new create] do
+  resources :collections, only: %i[index show new create update] do
     resources :writings, only: %i[new]
   end
 

@@ -6,7 +6,9 @@
 
 <% if user_signed_in? %>
   <small>
-    <%= link_to 'add to collection', new_collection_writing_path(@collection), class: 'text-black'  %>
+    <%= link_to 'add to collection',
+                new_collection_writing_path(@collection),
+                class: 'text-black' %> | <%= pub_unpub_link(@collection) %>
   </small>
 <% end %>
 

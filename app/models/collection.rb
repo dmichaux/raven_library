@@ -5,7 +5,23 @@ class Collection < ApplicationRecord
 
   scope :alpha_order, -> {order(:name)}
 
-  def publish_all
+  def published?
+    published_at.present?    
+  end
+
+  def publish
+    return if archived? || published?
+
+    update(published_at: Time.zone.now)
+  end
+
+  def unpublish
+    return unless published?
+
+    update(published_at: nil)
+  end
+
+  def publish_writings
     return if archived?
 
     Writing.publish_by_collection(id)
@@ -17,11 +33,11 @@ class Collection < ApplicationRecord
 
   def archive
     update(archived_at: Time.zone.current)
-    Writing.archive(id)
+    # Writing.archive(id)
   end
   
   def de_archive
     update(archived_at: nil)
-    Writing.de_archive(id)
+    # Writing.de_archive(id)
   end
 end

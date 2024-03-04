@@ -8,7 +8,8 @@ module ApplicationHelper
   end
 
   def pub_unpub_link(object)
-    path = "#{object.class.to_s.downcase}_path"
+    klass = object.class.to_s.downcase
+    path = "#{klass}_path"
     text = 'publish'
     param = Time.zone.now
 
@@ -17,11 +18,10 @@ module ApplicationHelper
       param = nil
     end
 
-
     button_to(text,
               send(path, object),
               method: :patch,
-              params: { writing: { published_at: param } },
+              params: { klass.to_sym => { published_at: param } },
               class: 'btn btn-sm text-black p-0 text-decoration-underline',
               form_class: 'd-inline-flex')
   end
