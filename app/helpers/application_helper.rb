@@ -8,13 +8,20 @@ module ApplicationHelper
   end
 
   def pub_unpub_link(object)
-    text = object.published? ? 'unpublish' : 'publish'
     path = "#{object.class.to_s.downcase}_path"
+    text = 'publish'
+    param = Time.zone.now
+
+    if object.published?
+      text = 'unpublish'
+      param = nil
+    end
+
 
     button_to(text,
               send(path, object),
               method: :patch,
-              params: { writing: { published_at: Time.zone.now } },
+              params: { writing: { published_at: param } },
               class: 'btn btn-sm text-black p-0 text-decoration-underline',
               form_class: 'd-inline-flex')
   end

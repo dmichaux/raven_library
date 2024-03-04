@@ -24,6 +24,7 @@ class WritingsController < ApplicationController
   # So far, only for (un)publishing
   def update
     @writing.update(update_writing_params)
+    redirect_to @writing
   end
 
   # ====
