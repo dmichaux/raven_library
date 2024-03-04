@@ -2,11 +2,14 @@ class CollectionsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create update]
 
   def index
-    @collections = Collection.alpha_order
+    @collections = Collection.published.alpha_order unless user_signed_in?
+    @collections = Collection.alpha_order if user_signed_in?
   end
 
   def show
     @collection = Collection.includes(:writings).find params[:id]
+    @writings = @collection.published_writings.by_position unless user_signed_in?
+    @writings = @collection.writings.by_position if user_signed_in?
   end
   
   def new

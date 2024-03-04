@@ -1,9 +1,14 @@
 class Collection < ApplicationRecord
   has_many :writings,
            dependent: :restrict_with_exception
+  has_many :published_writings,
+           -> { where('writings.published_at IS NOT NULL') },
+           class_name: 'Writing',
+           dependent: :restrict_with_exception
 
 
-  scope :alpha_order, -> {order(:name)}
+  scope :alpha_order, -> { order(:name) }
+  scope :published, -> { where.not(published_at: nil) }
 
   def published?
     published_at.present?    

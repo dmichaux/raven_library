@@ -5,6 +5,7 @@ class Writing < ApplicationRecord
   has_rich_text :content
 
   scope :by_position, -> {order(:position)}
+  scope :published, -> { where.not(published_at: nil) }
 
   def self.publish_by_collection(collection_id)
     where(collection_id: collection_id)
