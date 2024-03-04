@@ -6,7 +6,12 @@
 
 <div class='page-heading'>
   <h2><%= @writing.name %></h2>
-  <small><%= @writing.author_fullname %> | <%= @writing.pub_date %></small>
+  <small>
+    <%= @writing.author_fullname %> | <%= @writing.pub_date %> 
+    <% if user_signed_in? %>
+      | <%= pub_unpub_link(@writing) %>
+    <% end %>
+  </small>
 </div>
 
 <article>

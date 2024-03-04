@@ -6,4 +6,11 @@ module ApplicationHelper
         writing_path(poem)
     )
   end
+
+  def pub_unpub_link(object)
+    text = object.published? ? 'unpublish' : 'publish'
+    path = "#{object.class.to_s.downcase}_path"
+
+    link_to(text, send(path, object), method: :patch, class: 'text-black')
+  end
 end

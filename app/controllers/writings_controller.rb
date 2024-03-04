@@ -1,6 +1,7 @@
 class WritingsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new create]
+  before_action :authenticate_user!, only: %i[new create update]
   before_action :find_collection, only: %i[new create]
+  before_action :find_writing, only: %i[show update]
 
   def show
     @writing = Writing.find params[:id]
@@ -12,7 +13,7 @@ class WritingsController < ApplicationController
   end
 
   def create
-    writing = Writing.new(writing_params)
+    writing = Writing.new(create_writing_params)
     if writing.save
       redirect_to writing_path(writing) 
     else
@@ -20,13 +21,28 @@ class WritingsController < ApplicationController
     end
   end
 
-  private
+  # So far, only for (un)publishing
+  def update
+    @writing.update(update_writing_params)
+  end
 
-  def writing_params
+  # ====
+  private
+  # ====
+
+  def create_writing_params
     params.require(:writing).permit(:collection_id, :author_first, :author_middle, :author_last, :name, :content)
+  end
+
+  def update_writing_params
+    params.require(:writing).permit(:published_at)
   end
 
   def find_collection
     @collection = Collection.find params[:collection_id]
+  end
+
+  def find_writing
+    @writing = Writing.find params[:id]
   end
 end
