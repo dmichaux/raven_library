@@ -11,6 +11,11 @@ module ApplicationHelper
     text = object.published? ? 'unpublish' : 'publish'
     path = "#{object.class.to_s.downcase}_path"
 
-    link_to(text, send(path, object), method: :patch, class: 'text-black')
+    button_to(text,
+              send(path, object),
+              method: :patch,
+              params: { writing: { published_at: Time.zone.now } },
+              class: 'btn btn-sm text-black p-0 text-decoration-underline',
+              form_class: 'd-inline-flex')
   end
 end
