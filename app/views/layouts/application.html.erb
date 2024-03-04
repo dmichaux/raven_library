@@ -13,7 +13,16 @@
   <body class='text-black'>
     <%= render 'layouts/header' %>
     <div class='row vh-100'>
-      <div class='col-2 border-end border-2 border-black'></div>
+      <div class='col-2 pe-0 border-end border-2 border-black'>
+        <% if user_signed_in? %>
+          <small class='d-flex justify-content-center mt-2'>
+            <%= link_to 'logout',
+                        destroy_user_session_path,
+                        data: { turbo_method: :delete },
+                        class: 'text-black'  %>
+          </small>
+        <% end %>
+      </div>
       <main class='col-10'>
         <%= yield %>
       </main>

@@ -3,20 +3,10 @@
     <%= raven_image_link %>
   </div>
   <header class='col-10 d-flex'>
-    <div class='align-self-center'>
+    <div class='align-self-center w-100'>
       <h1><%= link_to('Raven Library', root_path, class: 'text-decoration-none text-black') %></h1>
-      <nav>
-        <%= yield(:breadcrumbs) %>
-      </nav>
+      <nav><%= yield(:breadcrumbs) %></nav>
     </div>
-    <% if user_signed_in? %>
-      <small>
-        <%= link_to 'sign out',
-                    destroy_user_session_path,
-                    data: { turbo_method: :delete },
-                    class: 'text-black'  %>
-      </small>
-    <% end %>
   </header>
   <!-- <div class="notice"><%= notice %></div>
   <div class="alert"><%= alert %></div> -->
