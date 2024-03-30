@@ -1,4 +1,5 @@
 class Collection < ApplicationRecord
+  belongs_to :genre
   has_many :writings,
            dependent: :restrict_with_exception
   has_many :published_writings,
