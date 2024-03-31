@@ -1,10 +1,6 @@
 class CollectionsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create update]
-
-  def index
-    @collections = Collection.published.alpha_order unless user_signed_in?
-    @collections = Collection.alpha_order if user_signed_in?
-  end
+  before_action :find_genre, only: %i[new create]
 
   def show
     @collection = Collection.includes(:writings).find params[:id]
@@ -13,12 +9,12 @@ class CollectionsController < ApplicationController
   end
   
   def new
-    @collection = Collection.new
+    @collection = @genre.collections.build
   end
   
   def create
     @collection = Collection.new(collection_params)
-    redirect_to @collection if @collection.save
+    redirect_to(@collection.save ? @collection : @genre)
   end
   
   # So far, only for (un)publishing

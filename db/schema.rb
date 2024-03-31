@@ -64,6 +64,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_30_203859) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name", null: false
+    t.datetime "published_at"
+    t.datetime "archived_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

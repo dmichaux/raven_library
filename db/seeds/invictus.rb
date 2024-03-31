@@ -1,5 +1,5 @@
 Writing.create(
-  collection: Collection.find_by(name: 'Poetry'),
+  collection: Collection.find_by(name: 'Henley'),
   author_first: 'William',
   author_middle: 'Ernest',
   author_last: 'Henley',

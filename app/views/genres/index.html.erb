@@ -1,0 +1,11 @@
+<% if user_signed_in? %>
+  <small>
+    <%= link_to 'new genre', new_genre_path, class: 'text-black'  %>
+  </small>
+<% end %>
+
+<h2 class='page-heading'>Genres</h2>
+
+<ul class='list-group list-group-flush mt-3'>
+  <%= render @genres %>
+</ul>

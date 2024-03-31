@@ -1,0 +1,18 @@
+<% content_for :breadcrumbs do %>
+  <%= link_to('Genres', genres_path, class: 'text-black') %>
+  > <%= @genre.name %>
+<% end %>
+
+<% if user_signed_in? %>
+  <small>
+    <%= link_to 'add to genre',
+                new_genre_collection_path(@genre),
+                class: 'text-black' %> | <%= pub_unpub_link(@genre) %>
+  </small>
+<% end %>
+
+<h2 class='page-heading'><%= @genre.name %></h2>
+
+<ul class='list-group list-group-flush mt-3'>
+  <%= render partial: 'collections/collection', genre: @collections %>
+</ul>
