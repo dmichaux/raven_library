@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :collection do
-    name { Faker::Book.unique.genre }
+    name { Faker::Book.unique.title }
+    genre
 
     trait :published do
       published_at { Date.current.days_ago(rand(20)) }
