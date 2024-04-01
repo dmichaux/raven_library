@@ -23,11 +23,12 @@ namespace :demo do
     genres = FactoryBot.create_list(:genre, 5)
 
     colls = genres.map do |g|
-      FactoryBot.create_list(:collection, 3, :published, genre: g)
+      FactoryBot.create_list(:collection, 3, genre: g)
     end.flatten
 
     colls.each do |c|
-      FactoryBot.create_list(:writing, 12, :published, collection: c)
+      FactoryBot.create_list(:writing, 10, collection: c)
+      FactoryBot.create_list(:writing, 5, :unpublished, collection: c)
     end
 
     puts 'done!'

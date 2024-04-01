@@ -5,9 +5,10 @@ FactoryBot.define do
     author_last { Faker::Name.last_name }
     name { Faker::Book.title }
     content { Array.new(rand(15..50)).map { Faker::Lorem.paragraph(sentence_count: rand(2..15)) }.join("\n\n") }
+    published_at { Date.current.days_ago(rand(20)) }
 
-    trait :published do
-      published_at { Date.current.days_ago(rand(20)) }
+    trait :unpublished do
+      published_at { nil }
     end
 
     trait :archived do
