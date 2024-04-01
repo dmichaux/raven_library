@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'genres#index'
+  root 'static_pages#landing'
   devise_for :users
 
   resources :genres, only: %i[index show new create update] do
