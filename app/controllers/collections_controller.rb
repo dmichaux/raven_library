@@ -1,6 +1,6 @@
 class CollectionsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create update]
-  before_action :find_genre, only: %i[new create]
+  before_action :find_genre, only: %i[new]
 
   def show
     @collection = Collection.includes(:writings).find params[:id]
@@ -13,8 +13,8 @@ class CollectionsController < ApplicationController
   end
   
   def create
-    @collection = Collection.new(collection_params)
-    redirect_to(@collection.save ? @collection : @genre)
+    @collection = Collection.new(create_collection_params)
+    redirect_to(@collection.save ? @collection : @collection.genre)
   end
   
   # So far, only for (un)publishing
@@ -25,13 +25,19 @@ class CollectionsController < ApplicationController
     redirect_to @collection
   end
 
+  # ===
   private
+  # ===
 
   def create_collection_params
-    params.require(:collection).permit(:name)
+    params.require(:collection).permit(:name, :genre_id)
   end
 
   def update_collection_params
     params.require(:collection).permit(:published_at)
+  end
+
+  def find_genre
+    @genre = Genre.find params[:genre_id]
   end
 end

@@ -1,6 +1,6 @@
 <% content_for :breadcrumbs do %>
   <%= link_to('Genres', genres_path, class: 'text-black') %>
-  > <%= link_to(@collection.genre.name, genre_path(genre), class: 'text-black') %>
+  > <%= link_to(@collection.genre.name, genre_path(@collection.genre), class: 'text-black') %>
   > <%= link_to(@collection.name, @collection, class: 'text-black') %>
   > <%= @writing.name %>
 <% end %>

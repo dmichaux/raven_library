@@ -17,7 +17,7 @@ class GenresController < ApplicationController
   end
   
   def create
-    @genre = Genre.new(genre_params)
+    @genre = Genre.new(create_genre_params)
     redirect_to @genre if @genre.save
   end
   

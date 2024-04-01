@@ -1,6 +1,6 @@
 class WritingsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create update]
-  before_action :find_collection, only: %i[new create]
+  before_action :find_collection, only: %i[new]
   before_action :find_writing, only: %i[show update]
 
   def show
@@ -17,7 +17,7 @@ class WritingsController < ApplicationController
     if writing.save
       redirect_to writing_path(writing) 
     else
-      redirect_to @collection
+      redirect_to writing.collection
     end
   end
 

@@ -1,11 +1,13 @@
 <% content_for :breadcrumbs do %>
   <%= link_to('Genres', genres_path, class: 'text-black') %>
-  > <%= link_to(@collection.genre.name, genre_path(genre), class: 'text-black') %>
+  > <%= link_to(@genre.name, genre_path(@genre), class: 'text-black') %>
 <% end %>
 
 <h2 class='page-heading'>Add Collection</h2>
 
 <%= form_with model: @collection do |f| %>
+  <%= f.hidden_field :genre_id %>
+
   <%= f.label :name, class: 'form-label' %>
   <%= f.text_field :name, class: 'form-control form-control-sm w-50' %>
   <%= f.submit class: 'mt-3 btn btn-sm btn-secondary' %>
