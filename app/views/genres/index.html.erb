@@ -1,3 +1,8 @@
+<% content_for :breadcrumbs do %>
+  <%= link_to('Home', root_path, class: 'text-black') %>
+  > Genres
+<% end %>
+
 <% if user_signed_in? %>
   <small>
     <%= link_to 'new genre', new_genre_path, class: 'text-black'  %>

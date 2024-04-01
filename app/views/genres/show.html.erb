@@ -1,5 +1,6 @@
 <% content_for :breadcrumbs do %>
-  <%= link_to('Genres', genres_path, class: 'text-black') %>
+  <%= link_to('Home', root_path, class: 'text-black') %>
+  > <%= link_to('Genres', genres_path, class: 'text-black') %>
   > <%= @genre.name %>
 <% end %>
 
