@@ -14,10 +14,10 @@ gem 'sassc-rails'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
-gem 'tzinfo-data', platforms: %i[ windows jruby ]
+gem 'tzinfo-data', platforms: %i[ mswin mswin64 mingw x64_mingw jruby ]
 
 group :development, :test do
-  gem 'debug', platforms: %i[ mri windows ]
+  gem 'debug', platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'faker'
