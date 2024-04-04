@@ -17,4 +17,7 @@ test:
 
 production:
   <<: *default
-  database_rul: <%= ENV['DATABASE_URL'] %>
+  database: <%= ENV["RL_DATABASE"] %>
+  host: <%= ENV["RL_HOST"] %>
+  username: <%= ENV["RL_USERNAME"] %>
+  password: <%= ENV["RL_PASSWORD"] %>
