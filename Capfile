@@ -31,8 +31,8 @@ install_plugin Capistrano::SCM::Git
 # require "capistrano/bundler"
 # require "capistrano/rails/migrations"
 require "capistrano/rails"
-require "capistrano/rbenv"
 require "capistrano/passenger"
+require "capistrano/rbenv"
 
 set :rbenv_type, :user
 set :rbenv_ruby, '3.3.0'

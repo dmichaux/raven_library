@@ -1,5 +1,5 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.18.1"
+lock "~> 3.18"
 
 set :application, "raven_library"
 set :repo_url, "git@github.com:dmichaux/raven_library.git"
@@ -25,7 +25,7 @@ set :deploy_to, "/home/deploy/#{fetch :application}"
 # append :linked_files, "config/database.yml", 'config/master.key'
 
 # Default value for linked_dirs is []
-append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
+append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor', '.bundle', 'public/system', 'public/uploads', 'storage'
 
 
 # Default value for default_env is {}
@@ -39,4 +39,3 @@ set :keep_releases, 5
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
-# set :ssh_options, { forward_agent: true, user: "deploy", auth_methods: ['publickey'], keys: %w(~/.ssh/id_rsa) }
