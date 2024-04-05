@@ -1,5 +1,5 @@
 class WritingsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new create update]
+  before_action :authenticate_user!, only: %i[new edit create update]
   before_action :find_collection, only: %i[new]
   before_action :find_writing, only: %i[show edit update]
 
