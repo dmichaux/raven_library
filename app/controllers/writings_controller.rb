@@ -4,7 +4,7 @@ class WritingsController < ApplicationController
   before_action :find_writing, only: %i[show edit update]
 
   def show
-    @writing.increment! :views
+    @writing.increment!(:views) unless user_signed_in?
     @collection = @writing.collection
   end
 
