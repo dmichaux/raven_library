@@ -4,7 +4,7 @@ class WritingsController < ApplicationController
   before_action :find_writing, only: %i[show edit update]
 
   def show
-    @writing = Writing.find params[:id]
+    @writing.increment! :views
     @collection = @writing.collection
   end
 
