@@ -11,6 +11,7 @@
   <small>
     <%= @writing.author_fullname %> | <%= @writing.pub_date %> 
     <% if user_signed_in? %>
+      | <%= link_to 'edit', edit_writing_path(@writing), class: 'text-black' %>
       | <%= pub_unpub_link(@writing) %>
     <% end %>
   </small>
