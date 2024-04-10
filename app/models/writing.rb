@@ -4,24 +4,33 @@ class Writing < ApplicationRecord
   acts_as_list scope: :collection
   has_rich_text :content
 
-  scope :by_position, -> {order(:position)}
+  scope :by_position, -> { order(:position) }
   scope :published, -> { where.not(published_at: nil) }
+  scope :view_order, -> { order(views: :desc) }
 
+  # === class methods
+  
   def self.publish_by_collection(collection_id)
     where(collection_id: collection_id)
     .each(&:publish)
   end
-
+  
   def self.archive(collection_id)
     where(collection_id: collection_id)
     .update_all(published_at: nil, archived_at: Time.zone.current)
   end
-
+  
   # does not re-publish
   def self.de_archive(collection_id)
     where(collection_id: collection_id)
     .update_all(archived_at: nil)
   end
+  
+  def self.collate_views
+    view_order.includes(collection: [:genre]).map(&:metadata_view)
+  end
+
+    # === instance methods
 
   def published?
     published_at.present?    
@@ -62,5 +71,9 @@ class Writing < ApplicationRecord
 
   def pub_date
     published_at&.strftime('%Y') || 'unpublished'
+  end
+
+  def metadata_view
+    "#{views} | #{name} | #{collection.genre.name}"
   end
 end
