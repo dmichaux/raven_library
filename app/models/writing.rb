@@ -9,23 +9,23 @@ class Writing < ApplicationRecord
   scope :view_order, -> { order(views: :desc) }
 
   # === class methods
-  
+
   def self.publish_by_collection(collection_id)
     where(collection_id: collection_id)
     .each(&:publish)
   end
-  
+
   def self.archive(collection_id)
     where(collection_id: collection_id)
     .update_all(published_at: nil, archived_at: Time.zone.current)
   end
-  
+
   # does not re-publish
   def self.de_archive(collection_id)
     where(collection_id: collection_id)
     .update_all(archived_at: nil)
   end
-  
+
   def self.collate_views
     view_order.includes(collection: [:genre]).map(&:metadata_view)
   end
