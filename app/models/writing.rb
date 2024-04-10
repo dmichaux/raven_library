@@ -30,7 +30,7 @@ class Writing < ApplicationRecord
     view_order.includes(collection: [:genre]).map(&:metadata_view)
   end
 
-    # === instance methods
+  # === instance methods
 
   def published?
     published_at.present?    
