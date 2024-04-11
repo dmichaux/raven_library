@@ -28,7 +28,7 @@ class CollectionsController < ApplicationController
   # ===
 
   def create_collection_params
-    params.require(:collection).permit(:name, :genre_id)
+    params.require(:collection).permit(:name, :blurb, :genre_id)
   end
 
   def update_collection_params
