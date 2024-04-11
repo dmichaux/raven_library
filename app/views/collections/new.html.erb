@@ -6,7 +6,8 @@
   <%= f.label :name, class: 'form-label' %>
   <%= f.text_field :name, class: 'form-control form-control-sm w-50' %>
 
-  <%# TODO: f.text_area :teaser %>
+  <%= f.label :teaser, class: 'form-label' %>
+  <%= f.text_area :teaser, class: 'form-control form-control-sm w-50' %>
 
   <%= f.submit class: 'mt-3 btn btn-sm btn-secondary' %>
   <%= link_to 'cancel', genre_path(@genre), class: 'mt-3 btn btn-sm btn-secondary' %>
