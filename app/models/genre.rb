@@ -1,4 +1,7 @@
 class Genre < ApplicationRecord
+
+  # === relationships
+
   has_many :collections,
            dependent: :restrict_with_exception
   has_many :published_collections,
@@ -6,8 +9,18 @@ class Genre < ApplicationRecord
            class_name: 'Collection',
            dependent: :restrict_with_exception
 
+  # === validations
+
+  validates :name, presence: true
+
+  # === scopes
+
   scope :alpha_order, -> { order(:name) }
   scope :published, -> { where.not(published_at: nil) }
+
+  # === class methods
+
+  # === instance methods
 
   def published?
     published_at.present?    

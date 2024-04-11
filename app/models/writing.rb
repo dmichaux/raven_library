@@ -1,8 +1,20 @@
 class Writing < ApplicationRecord
+
+  # === relationships
+
   belongs_to :collection
+
+  # === extensions
 
   acts_as_list scope: :collection
   has_rich_text :content
+
+  # === validations
+
+  # TODO: add this constraint on :name to the database
+  validates :name, :content, presence: true
+
+  # === scopes
 
   scope :by_position, -> { order(:position) }
   scope :published, -> { where.not(published_at: nil) }

@@ -1,4 +1,7 @@
 class Collection < ApplicationRecord
+
+  # === relationships
+
   belongs_to :genre
   has_many :writings,
            dependent: :restrict_with_exception
@@ -7,9 +10,19 @@ class Collection < ApplicationRecord
            class_name: 'Writing',
            dependent: :restrict_with_exception
 
+  # === validations
+
+  # TODO add this constraint in the database
+  validates :name, presence: true
+
+  # === scopes
 
   scope :alpha_order, -> { order(:name) }
   scope :published, -> { where.not(published_at: nil) }
+
+  # === class methods
+
+  # === instance methods
 
   def published?
     published_at.present?    
