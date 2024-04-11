@@ -21,8 +21,6 @@ class GenresController < ApplicationController
     redirect_to @genre if @genre.save
   end
   
-  # So far, only for (un)publishing
-  # TODO: should be calling @genre.publish, instead
   def update
     @genre = Genre.find params[:id]
     @genre.update(update_genre_params)

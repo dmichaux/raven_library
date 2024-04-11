@@ -17,8 +17,6 @@ class CollectionsController < ApplicationController
     redirect_to(@collection.save ? @collection : @collection.genre)
   end
   
-  # So far, only for (un)publishing
-  # TODO: should be calling @collection.publish, instead
   def update
     @collection = Collection.find params[:id]
     @collection.update(update_collection_params)
