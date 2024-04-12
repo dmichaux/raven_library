@@ -1,31 +1,32 @@
 class WritingsController < ApplicationController
   before_action :authenticate_user!, only: %i[new edit create update]
-  before_action :find_collection, only: %i[new]
-  before_action :find_writing, only: %i[show edit update]
+  before_action :find_writing_and_collection, only: %i[show create edit update]
 
   def show
     @writing.increment!(:views) unless user_signed_in?
-    @collection = @writing.collection
   end
 
   def new
+    @collection = Collection.find params[:collection_id]
     @writing = @collection.writings.build
   end
 
   def create
-    writing = Writing.new(writing_params)
-    if writing.save
-      redirect_to writing_path(writing) 
+    if @writing.save
+      redirect_to writing_path(@writing) 
     else
-      redirect_to writing.collection
+      render :new, status: :unprocessable_entity
     end
   end
 
-  def edit;end
+  def edit; end
 
   def update
-    @writing.update(writing_params)
-    redirect_to @writing
+    if @writing.update(writing_params)
+      redirect_to @writing
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   # ====
@@ -42,11 +43,8 @@ class WritingsController < ApplicationController
                                     :content)
   end
 
-  def find_collection
-    @collection = Collection.find params[:collection_id]
-  end
-
-  def find_writing
-    @writing = Writing.find params[:id]
+  def find_writing_and_collection
+    @writing = params[:id] ? Writing.find(params[:id]) : Writing.new(writing_params)
+    @collection = @writing.collection
   end
 end

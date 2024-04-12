@@ -6,6 +6,7 @@ gem 'rails', '~> 7.1.3'
 gem 'acts_as_list'
 gem 'bootsnap', require: false
 gem 'bootstrap', '~> 5.3'
+# TODO: bootstrap_form
 gem 'bundler-audit'
 
 gem 'devise', '~> 4.9'
