@@ -39,7 +39,7 @@ class Writing < ApplicationRecord
   end
 
   def self.collate_views
-    view_order.includes(collection: [:genre]).map(&:metadata_view)
+    view_order.includes(:collection).map(&:metadata_view)
   end
 
   # === instance methods
