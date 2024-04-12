@@ -86,6 +86,6 @@ class Writing < ApplicationRecord
   end
 
   def metadata_view
-    "#{views} | #{name} | #{collection.genre.name}"
+    "#{views} | #{name} | #{collection.name}"
   end
 end
