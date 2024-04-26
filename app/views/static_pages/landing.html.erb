@@ -1,4 +1,7 @@
-<h4 class='page-heading'><%= link_to 'Explore the shelves', genres_path, class: 'btn btn-secondary' %></h2>
+<div class='row w-50 mt-4 justify-content-around'>
+  <%= link_to 'Explore the shelves', genres_path, class: 'btn btn-secondary w-auto' %>
+  <%= link_to 'Featured', writings_path(featured: true), class: 'btn btn-secondary w-auto' %>
+</div>
 
 <%# TODO: make these quotes random from DB records, or API %>
 <blockquote class='mt-5'>

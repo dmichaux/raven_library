@@ -4,7 +4,7 @@ class WritingsController < ApplicationController
 
   # Currently, only for showing featured writings
   def index
-    redirect_to root_path unless params[:featured] == true
+    redirect_to root_path unless params[:featured]
     @writings = Writing.featured
   end
 

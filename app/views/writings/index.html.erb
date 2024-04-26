@@ -1,0 +1,12 @@
+<% content_for :breadcrumbs do %>
+  <%= link_to('Home', root_path, class: 'text-black') %>
+  > Featured
+<% end %>
+
+<div class='page-heading'>
+  <h2>Featured</h2>
+</div>
+
+<ul class='list-group list-group-flush mt-3'>
+  <%= render partial: 'featured', collection: @writings, as: :writing %>
+</ul>

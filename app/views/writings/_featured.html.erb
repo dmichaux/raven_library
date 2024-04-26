@@ -1,0 +1,9 @@
+<li class='list-group-item mb-2 ps-0 border border-0'>
+  <h6>
+    <%= link_to writing.name,
+            writing_path(writing),
+            class: 'text-decoration-none text-black' %>
+  </h6>
+  <small><%= writing.genre.name %></small>
+  <small class='d-block'><%= writing.author_fullname %> | <%= writing.pub_date %></small>
+</li>

@@ -9,6 +9,8 @@ class Writing < ApplicationRecord
   acts_as_list scope: :collection
   has_rich_text :content
 
+  delegate :genre, to: :collection
+
   # === validations
 
   # TODO: add this constraint on :name to the database
