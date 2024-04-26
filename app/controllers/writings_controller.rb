@@ -2,6 +2,12 @@ class WritingsController < ApplicationController
   before_action :authenticate_user!, only: %i[new edit create update]
   before_action :find_writing_and_collection, only: %i[show create edit update]
 
+  # Currently, only for showing featured writings
+  def index
+    redirect_to root_path unless params[:featured] == true
+    @writings = Writing.featured
+  end
+
   def show
     @writing.increment!(:views) unless user_signed_in?
   end
