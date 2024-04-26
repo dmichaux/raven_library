@@ -19,6 +19,7 @@ class Writing < ApplicationRecord
   scope :by_position, -> { order(:position) }
   scope :published, -> { where.not(published_at: nil) }
   scope :view_order, -> { order(views: :desc) }
+  scope :featured, -> { published.where(featured: true).order(created_at: :desc) }
 
   # === class methods
 
