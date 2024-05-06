@@ -4,6 +4,6 @@
             writing_path(writing),
             class: 'text-decoration-none text-black' %>
   </h6>
-  <small><%= writing.genre.name %></small>
+  <small><%= writing.genre.name %>, <%= writing.collection.name %></small>
   <small class='d-block'><%= writing.author_fullname %> | <%= writing.pub_date %></small>
 </li>
